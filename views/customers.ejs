@@ -1,0 +1,41 @@
+<!-- views/customers.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Customers</title>
+</head>
+<body>
+    <p id="titleName">Sanketrao Shinde</p>
+    <h1>Customer Management System</h1>
+    <h2>Customer List</h2>
+    <a href="/customers/add">Add New Customer</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% customers.forEach(customer => { %>
+            <tr>
+                <td><%= customer.id %></td>
+                <td><%= customer.name %></td>
+                <td><%= customer.email %></td>
+                <td><%= customer.phone %></td>
+                <td>
+                    <a href="/customers/edit/<%= customer.id %>">Edit</a>
+                    <a href="/customers/delete/<%= customer.id %>" onclick="return confirm('Are you sure to delete account?')">Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
