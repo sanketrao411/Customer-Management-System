@@ -4,14 +4,12 @@ const db = require('../db');
 
 router.get('/', async (req, res) => {
     const [customers] = await db.query('SELECT * FROM customers');
-    res.render('customers', { customers });
+    res.render('customers.ejs', { customers });
 });
-
 
 router.get('/add', (req, res) => {
     res.render('add_customer');
 });
-
 
 router.post('/add', async (req, res) => {
     const { name, email, phone } = req.body;
